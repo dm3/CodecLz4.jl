@@ -74,6 +74,7 @@ Finalizes the LZ4F Compression Codec.
 """
 function TranscodingStreams.finalize(codec::LZ4Compressor)::Nothing
     LZ4F_freeCompressionContext(codec.ctx[])
+    codec.ctx[] = C_NULL
     nothing
 end
 
@@ -166,6 +167,7 @@ Finalizes the LZ4F Decompression Codec.
 """
 function TranscodingStreams.finalize(codec::LZ4Decompressor)::Nothing
     LZ4F_freeDecompressionContext(codec.dctx[])
+    codec.dctx[] = C_NULL
     nothing
 end
 

@@ -81,6 +81,11 @@ end
     @test_throws CodecLz4.LZ4Exception transcode(codec, "not properly formatted")
     @test_nowarn TranscodingStreams.finalize(codec)
 
+    # calling finalize should not segfault when called twice
+    codec = LZ4Decompressor()
+    @test_nowarn TranscodingStreams.initialize(codec)
+    @test_nowarn TranscodingStreams.finalize(codec)
+    @test_nowarn TranscodingStreams.finalize(codec)
 end
 
 @testset "keywords" begin
