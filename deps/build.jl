@@ -10,8 +10,8 @@ end
 
 liblz4 = library_dependency("liblz4", validate = validate_lz4)
 
-long_version = "1.8.1.2"
-short_version = "1.8.1"
+long_version = "1.9.2"
+short_version = "1.9.2"
 zipname = "lz4_v$(replace(short_version, "." => "_"))_win$(WORD_SIZE).zip"
 
 suffix = "so.$short_version"
